@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTower : MonoBehaviour
+public class Towers : MonoBehaviour
 {
     [SerializeField][Range(1,7)] private float spawnTimer;
     [SerializeField] private Transform spawnPoint;
