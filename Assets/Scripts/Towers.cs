@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Towers : MonoBehaviour
 {
+    private Units ctrUnits;
     [SerializeField][Range(1,7)] private float spawnTimer;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject Unit;
     [SerializeField] private List<GameObject> listUnits;
 
-    private int sizeList= 10;
+    private int sizeList= 5;
     private float countTimer;
     private int o;
+    private GameObject ObjUnit;
     private void Awake(){
 
     }
@@ -19,7 +21,7 @@ public class Towers : MonoBehaviour
     void Start()
     {
         countTimer= 0;
-        //AddUnitsPool(sizeList);
+        AddUnitsPool(sizeList);
     }
 
     // Update is called once per frame
@@ -32,19 +34,22 @@ public class Towers : MonoBehaviour
         }
     }
 
-    public void RequestUnit(){
+    public GameObject RequestUnit(){
         for(o=0; o<listUnits.Count; o++){
             if(!listUnits[o].activeSelf){
-                //listUnits[o].SetActive(true);
-                //Objeto seleccionado
+                return listUnits[o];
             }
         }
         AddUnitsPool(1);
-        //listUnits[listUnits.Count - 1].SetActive(true);
-        //Objeto sleecionado
+        return listUnits[listUnits.Count -1];
     }
     public void SpawnUnit(){
-        Instantiate(Unit, spawnPoint.position, Quaternion.identity);
+        //Instantiate(Unit, spawnPoint.position, Quaternion.identity);
+        ObjUnit= RequestUnit();
+        ObjUnit.SetActive(true);
+        ObjUnit.transform.position= spawnPoint.position;
+        ctrUnits= ObjUnit.GetComponent<Units>();
+        ctrUnits.setMove(true);
     }
     private void AddUnitsPool(int n){
         //Crea n cantidad de objetos desactivandolos y añadiendolos a la lista
