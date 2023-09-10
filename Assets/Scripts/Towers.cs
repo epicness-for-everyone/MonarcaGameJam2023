@@ -14,6 +14,7 @@ public class Towers : MonoBehaviour
     [Header("Valores de las unidades")]
 
     private Units ctrUnits;
+    private MonsterDefault monsterDefault;
     
     
 
@@ -34,29 +35,45 @@ public class Towers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /**
         countTimer+= Time.deltaTime;
         if(countTimer >= spawnTimer){
             SpawnUnit();
             countTimer= 0;
         }
+        */
     }
 
     
-    public void SpawnUnit(){
+    public void SpawnUnit(GameObject monsterModel){
         //Generar unidades
         //Instantiate(Unit, spawnPoint.position, Quaternion.identity);
+        /*
         ObjUnit= RequestUnit();
         ObjUnit.SetActive(true);
         ObjUnit.transform.position= spawnPoint.position;
         ctrUnits= ObjUnit.GetComponent<Units>();
         ctrUnits.setMove(true);
-        /*
+        /*/
         ObjUnit= RequestUnit();
-        ObjUnit.SetActive(true);
+        ObjUnit.transform.GetChild(0).gameObject.SetActive(false);
+        monsterDefault= monsterModel.GetComponent<MonsterDefault>();
         //transformcación
+        ObjUnit.transform.position= spawnPoint.position;
+
         ctrUnits= ObjUnit.GetComponent<Units>();
-        ctrUnits.ResetUnit(int nlife, int ndamage, int ndir, float speed, float nrecoilD);
-        */
+        ctrUnits.ResetUnit(
+            monsterDefault.getLife(),
+            monsterDefault.getDamage(),
+            monsterDefault.getDirection(),
+            monsterDefault.getSpeed(),
+            monsterDefault.getRecoilDistance(),
+            monsterDefault.getAnim()
+        );
+
+        //ctrUnits.ResetUnit(int nlife, int ndamage, int ndir, float speed, float nrecoilD);
+        ObjUnit.SetActive(true);
+        //*/
     }
     public void TakeDamage(int damage){
         //La torre recibe daño

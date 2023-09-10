@@ -16,6 +16,7 @@ public class Units : MonoBehaviour
     private Units TargetUnit;
     private bool move= false;
     private bool takingDamage;
+    [SerializeField]private Animator unitAnim;
     [SerializeField]
     [Tooltip("Es la distancia que hace recorrer a su objetivo")]private float recoilDistance;
     private float recoil;
@@ -26,7 +27,9 @@ public class Units : MonoBehaviour
     [SerializeField] private string TagTarget;
     [SerializeField] private string TagTower;
     
-    private void Awake(){}
+    private void Awake(){
+        unitAnim= GetComponent<Animator>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -66,19 +69,21 @@ public class Units : MonoBehaviour
     }
     public void DieUnit(){
         //Cuando muere la unidad
-        move= false;
+        noMove();
         gameObject.SetActive(false);
     }
-    public void ResetUnit(int nlife, int ndamage, int ndir, float speed, float nrecoilD){
+    public void ResetUnit(int nlife, int ndamage, int ndir, float speed, float nrecoilD, float anim){
         //Al momento de generar una nueva unidad se le asignan las nuevas propiedades y se reinicia sus variables
         life= nlife;
         damage= ndamage;
         direction= ndir;
         movementSpeed= speed;
         recoilDistance= nrecoilD;
+        unitAnim.SetFloat("Type", anim);
+        //Debug.Log("anim number "+anim);
         resetTarget();
         takingDamage= false;
-        setMove(true);
+        setMove();
     }
     //Colliders
     private void OnTriggerEnter2D(Collider2D col) {
@@ -105,8 +110,13 @@ public class Units : MonoBehaviour
     }
 
     //getters and setters
-    public void setMove(bool b){
-        move= b;
+    public void setMove(){
+        move= true;
+        unitAnim.SetBool("walk",true);
+    }
+    public void noMove(){
+        move= false;
+        unitAnim.SetBool("walk",false);
     }
     public void setDamage(int n){
         damage= n;

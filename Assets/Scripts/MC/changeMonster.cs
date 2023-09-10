@@ -18,6 +18,7 @@ public class changeMonster : MonoBehaviour
     private Sprite RANDOM2;
     public string pieceSelect;
     public string bodySelect;
+    [SerializeField] private mergeMonster MergeMonster;
     private void Awake(){
         MCPM1_IMG= MCPM1.GetComponent<Image>();
         MCPM2_IMG= MCPM2.GetComponent<Image>();
@@ -37,7 +38,9 @@ public class changeMonster : MonoBehaviour
         if(select == "MCPM1") pieceSelect = MCPM1_IMG.sprite.name;
         else pieceSelect = MCPM2_IMG.sprite.name;
         bodySelect =  MCCM_IMG.sprite.name;
-        
+        //mandamos los datos al mergeMonster
+        MergeMonster.mergeResult(pieceSelect, bodySelect);
+
         RANDOM = PIECE_MONSTER[Random.Range(0, PIECE_MONSTER.Length)];
         RANDOM2 = PIECE_MONSTER[Random.Range(0, PIECE_MONSTER.Length)];
         MCPM1_IMG.sprite = RANDOM;
@@ -55,8 +58,5 @@ public class changeMonster : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //void Update(){}
 }
