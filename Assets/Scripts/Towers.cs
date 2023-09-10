@@ -55,7 +55,9 @@ public class Towers : MonoBehaviour
         ctrUnits= ObjUnit.GetComponent<Units>();
         ctrUnits.setMove(true);
         /*/
+        
         ObjUnit= RequestUnit();
+        ObjUnit.SetActive(true);
         ObjUnit.transform.GetChild(0).gameObject.SetActive(false);
         monsterDefault= monsterModel.GetComponent<MonsterDefault>();
         //transformcación
@@ -72,7 +74,7 @@ public class Towers : MonoBehaviour
         );
 
         //ctrUnits.ResetUnit(int nlife, int ndamage, int ndir, float speed, float nrecoilD);
-        ObjUnit.SetActive(true);
+        
         //*/
     }
     public void TakeDamage(int damage){
