@@ -16,24 +16,27 @@ public class Units : MonoBehaviour
     private Units TargetUnit;
     private bool move= false;
     private bool takingDamage;
-    [SerializeField]private Animator unitAnim;
+    private Animator unitAnim;
     [SerializeField]
     [Tooltip("Es la distancia que hace recorrer a su objetivo")]private float recoilDistance;
     private float recoil;
     private float counAttackCooldown;
     private GameObject Target;
     private Vector3 dmov;
+    private GameObject barLife;
+    private life ctrBarLife;
     [Header("Etiquetas de los objetivos")]
     [SerializeField] private string TagTarget;
     [SerializeField] private string TagTower;
     
     private void Awake(){
         unitAnim= GetComponent<Animator>();
+        barLife= transform.GetChild(0).gameObject;
+        ctrBarLife= barLife.GetComponent<life>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -57,6 +60,7 @@ public class Units : MonoBehaviour
     public void TakeDamage(int n){
         //Al recibir daño se verifica si la unidad sigue "viva"
         life-= n;
+        ctrBarLife.TakingDamage(n);
         if(life >= 0){
             //Sigo Vivo >:c
             takingDamage= true;
@@ -84,6 +88,8 @@ public class Units : MonoBehaviour
         resetTarget();
         takingDamage= false;
         setMove();
+        ctrBarLife.MaxLife(life);
+        barLife.SetActive(false);
     }
     //Colliders
     private void OnTriggerEnter2D(Collider2D col) {

@@ -10,6 +10,8 @@ public class Towers : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject Unit;
     [SerializeField] private List<GameObject> listUnits;
+    private GameObject BarLife;
+    private life ctrBarLife;
 
     [Header("Valores de las unidades")]
 
@@ -23,13 +25,16 @@ public class Towers : MonoBehaviour
     private int o;
     private GameObject ObjUnit;
     private void Awake(){
-
+        BarLife= transform.GetChild(0).gameObject;
+        ctrBarLife= BarLife.GetComponent<life>();
     }
     // Start is called before the first frame update
     void Start()
     {
         countTimer= 0;
         AddUnitsPool(sizeList);
+        ctrBarLife.MaxLife(life);
+        BarLife.SetActive(false);
     }
 
     // Update is called once per frame
@@ -79,7 +84,8 @@ public class Towers : MonoBehaviour
     }
     public void TakeDamage(int damage){
         //La torre recibe daño
-        life-= damage; 
+        life-= damage;
+        ctrBarLife.TakingDamage(damage); 
     }
     public GameObject RequestUnit(){
         for(o=0; o<listUnits.Count; o++){

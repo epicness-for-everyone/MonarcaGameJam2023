@@ -5,6 +5,7 @@ using UnityEngine;
 public class life : MonoBehaviour
 {
     [SerializeField][Range(0f,1f)] private float lifePoint;
+    private float maximunLife;
     private Transform ObjMask;
     private void Awake(){
         ObjMask= gameObject.transform.GetChild(0).gameObject.GetComponent<Transform>();
@@ -23,5 +24,12 @@ public class life : MonoBehaviour
 
     public void ChangeLife(float nlife){
         lifePoint= nlife;
+    }
+    public void TakingDamage(int n){
+        ChangeLife(((maximunLife-n)*maximunLife)/100);
+    }
+    public void MaxLife(float l){
+        maximunLife= l;
+        ChangeLife(1);
     }
 }
