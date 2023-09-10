@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class Units : MonoBehaviour
 {
-    private Units TargetUnit;
+    //[Header(Valores del tipo de unidad)]
+
+
+    [Header("Valores propios de la unidad")]
     [SerializeField] private int life;
     [SerializeField] private int damage;
     [SerializeField][Range(0,3)] private float attackCooldown;
     [SerializeField] private float movementSpeed;
     [SerializeField][Range(-1,1)] private int direction;
+    private Units TargetUnit;
     private bool move= false;
     private bool takingDamage;
-    [SerializeField]private float recoilDistance;
+    [SerializeField]
+    [Tooltip("Es la distancia que hace recorrer a su objetivo")]private float recoilDistance;
     private float recoil;
     private float counAttackCooldown;
     private GameObject Target;
+    private Vector3 dmov;
+    [Header("Etiquetas de los objetivos")]
     [SerializeField] private string TagTarget;
     [SerializeField] private string TagTower;
-    private Vector3 dmov;
+    
     private void Awake(){}
     // Start is called before the first frame update
     void Start()
     {
-        takingDamage= false;
-        Target= null;
-        ResetProperties();
+        
     }
 
     // Update is called once per frame
@@ -33,6 +38,7 @@ public class Units : MonoBehaviour
     {
         if(move){
             if(takingDamage){
+                //Movimiento del retoceso que resulta al enfrentarse a otra unidad
                 dmov= new Vector3(direction * recoil * -1, 0, transform.position.z);
                 recoil=(recoil >= 0)? recoil-0.2f : 0;
                 counAttackCooldown+= Time.deltaTime;
@@ -46,22 +52,40 @@ public class Units : MonoBehaviour
     }
 
     public void TakeDamage(int n){
+        //Al recibir daño se verifica si la unidad sigue "viva"
         life-= n;
         if(life >= 0){
             //Sigo Vivo >:c
             takingDamage= true;
-            ResetProperties();
+            counAttackCooldown= 0;
         }else{
             // x.x
             resetTarget();
-            gameObject.SetActive(false);
+            DieUnit();
         }
+    }
+    public void DieUnit(){
+        //Cuando muere la unidad
+        move= false;
+        gameObject.SetActive(false);
+    }
+    public void ResetUnit(int nlife, int ndamage, int ndir, float speed, float nrecoilD){
+        //Al momento de generar una nueva unidad se le asignan las nuevas propiedades y se reinicia sus variables
+        life= nlife;
+        damage= ndamage;
+        direction= ndir;
+        movementSpeed= speed;
+        recoilDistance= nrecoilD;
+        resetTarget();
+        takingDamage= false;
+        setMove(true);
     }
     //Colliders
     private void OnTriggerEnter2D(Collider2D col) {
-        if(col.CompareTag(TagTarget) && Target==null){
+        if(col.CompareTag(TagTarget) && Target==null && !takingDamage){
             Target= col.gameObject;
             TargetUnit= Target.GetComponent<Units>();
+            TargetUnit.setRecoil(recoilDistance);
             TargetUnit.TakeDamage(damage);
         }
         if(col.CompareTag(TagTower)){
@@ -69,20 +93,13 @@ public class Units : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    /*
-    Borrar el comentario en caso de emergencias 
-    (si no se quiere contar con la probabilidad de que las unidades se pasen de largo)
+    
+    //Borrar el comentario en caso de emergencias 
+    //(si no se quiere contar con la probabilidad de que las unidades se pasen de largo)
     private void OnTriggerExit2D(Collider2D col) {
         if(col.CompareTag(TagTarget)) Target=null;
     }
-    */
     
-    private void ResetProperties(){
-        recoil= recoilDistance;
-        counAttackCooldown= 0;
-        //pruebas
-        life=3;
-    }
     public void resetTarget(){
         Target= null;
     }
@@ -90,5 +107,22 @@ public class Units : MonoBehaviour
     //getters and setters
     public void setMove(bool b){
         move= b;
+    }
+    public void setDamage(int n){
+        damage= n;
+    }
+    public void setLife(int n){
+        life= n;
+    }
+    public void setVelocity(float n){
+        movementSpeed= n;
+    }
+    public void setDirection(int n){
+        //Recibe la direeción a la cual se va a mover
+        direction= n;
+    }
+    public void setRecoil(float d){
+        //Recive la distancia que va a recorrer
+        recoil= d;
     }
 }
