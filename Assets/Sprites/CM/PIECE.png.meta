@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: 5440617cdadb54849b5b279e4a342636
+guid: 5637d2620540fbe4d877ec7b3d251164
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4108871349420955415
-    second: MCCM_1
+      213: -7801754821490685348
+    second: PIECE_2
   - first:
-      213: -3584555057876071467
-    second: MCCM_2
+      213: -8438129882439156616
+    second: PIECE_3
   - first:
-      213: -3017449353100577308
-    second: MCCM_0
-  - first:
-      213: -5162352333382958228
-    second: MCCM_3
-  - first:
-      213: -5733236956399430460
-    second: MCCM_4
-  - first:
-      213: 556568970076149467
-    second: MCCM_5
+      213: -1452122575584537402
+    second: PIECE_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MCCM_1
+      name: PIECE_0
       rect:
         serializedVersion: 2
-        x: 392
-        y: 690
-        width: 185
-        height: 245
+        x: 0
+        y: 0
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 717140af8b4a50930800000000000000
-      internalID: 4108871349420955415
+      spriteID: b96a8b9e26478ef60800000000000000
+      internalID: 8063823100983682715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MCCM_2
+      name: PIECE_1
       rect:
         serializedVersion: 2
-        x: 28
-        y: 681
-        width: 262
-        height: 246
+        x: 23
+        y: 0
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5db8779aa2a114ec0800000000000000
-      internalID: -3584555057876071467
+      spriteID: db7092d5d476f9370800000000000000
+      internalID: 8331491417631819709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MCCM_0
+      name: PIECE_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 359
-        width: 209
-        height: 243
+        x: 46
+        y: 0
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e535bceccddf16d0800000000000000
-      internalID: -3017449353100577308
+      spriteID: c5a4b5843599ab390800000000000000
+      internalID: -7801754821490685348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MCCM_3
+      name: PIECE_3
       rect:
         serializedVersion: 2
-        x: 371
-        y: 359
-        width: 186
-        height: 240
+        x: 69
+        y: 0
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c63cc4377e3ab58b0800000000000000
-      internalID: -5162352333382958228
+      spriteID: 87cfa9c349db5ea80800000000000000
+      internalID: -8438129882439156616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MCCM_4
+      name: PIECE_4
       rect:
         serializedVersion: 2
-        x: 65
-        y: 26
-        width: 193
-        height: 240
+        x: 92
+        y: 0
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,29 +198,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c49ba83d537f60b0800000000000000
-      internalID: -5733236956399430460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MCCM_5
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 38
-        width: 241
-        height: 245
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd6d46a878459b700800000000000000
-      internalID: 556568970076149467
+      spriteID: 6c455ff063609dbe0800000000000000
+      internalID: -1452122575584537402
       vertices: []
       indices: 
       edges: []
@@ -237,7 +207,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7c34b8f8227620d439ecda7caaa04e76
+    spriteID: 59b6ffb995e739344aab2a5191f514b9
     internalID: 0
     vertices: []
     indices: 
