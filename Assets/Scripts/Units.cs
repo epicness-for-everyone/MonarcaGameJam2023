@@ -65,6 +65,7 @@ public class Units : MonoBehaviour
             //Sigo Vivo >:c
             takingDamage= true;
             counAttackCooldown= 0;
+            barLife.SetActive(true);
         }else{
             // x.x
             resetTarget();

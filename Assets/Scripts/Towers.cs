@@ -6,7 +6,7 @@ public class Towers : MonoBehaviour
 {
     [Header("Valores de la torre")]
     [SerializeField] private int life;
-    [SerializeField][Range(1,7)] private float spawnTimer;
+    //[SerializeField][Range(1,7)] private float spawnTimer;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject Unit;
     [SerializeField] private List<GameObject> listUnits;
@@ -21,7 +21,7 @@ public class Towers : MonoBehaviour
     
 
     private int sizeList= 5;
-    private float countTimer;
+    //private float countTimer;
     private int o;
     private GameObject ObjUnit;
     private void Awake(){
@@ -31,7 +31,7 @@ public class Towers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        countTimer= 0;
+        //countTimer= 0;
         AddUnitsPool(sizeList);
         ctrBarLife.MaxLife(life);
         BarLife.SetActive(false);
